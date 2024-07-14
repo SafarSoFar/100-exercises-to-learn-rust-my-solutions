@@ -1,11 +1,13 @@
+use std::num::Saturating;
 pub fn factorial(n: u32) -> u32 {
-    let mut result = 1;
+    let mut result = Saturating(1);
     for i in 1..=n {
         // Use saturating multiplication to stop at the maximum value of u32
         // rather than overflowing and wrapping around
-        result *= i;
+        let to_mul = Saturating(i);
+        result = result*to_mul;
     }
-    result
+    result.0
 }
 
 #[cfg(test)]
