@@ -1,4 +1,4 @@
-// TODO: Define a new trait, `Power`, that has a method `power` that raises `self`
+ TODO: Define a new trait, `Power`, that has a method `power` that raises `self`
 //  to the power of `n`.
 //  The trait definition and its implementations should be enough to get
 //  the tests to compile and pass.
