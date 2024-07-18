@@ -3,9 +3,16 @@
 //  The docs for the `std::fmt` module are a good place to start and look for examples:
 //  https://doc.rust-lang.org/std/fmt/index.html#write
 
+
 enum TicketNewError {
     TitleError(String),
     DescriptionError(String),
+}
+
+impl fmt::Display for TicketNewError{
+    fn fmt(&self, f : &mut fmt::Formatter) -> fmt::Result{
+        write!(f, "oh no");
+    }
 }
 
 // TODO: `easy_ticket` should panic when the title is invalid, using the error message
