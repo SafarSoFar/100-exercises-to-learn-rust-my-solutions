@@ -1,6 +1,7 @@
 // TODO: Implement `TryFrom<String>` and `TryFrom<&str>` for `Status`.
 //  The parsing should be case-insensitive.
 
+
 #[derive(Debug, PartialEq, Clone)]
 enum Status {
     ToDo,
@@ -8,6 +9,31 @@ enum Status {
     Done,
 }
 
+impl TryFrom<String> for Status{
+    type Error = ();
+    fn try_from(str_val : String) -> Result<Status, ()>{
+        let lowercase_str = str_val.to_lowercase();
+        match lowercase_str.as_str(){
+            "todo" => Ok(Status::ToDo),
+            "inprogress" => Ok(Status::InProgress),
+            "done" => Ok(Status::Done),
+            _ => Err(()),
+        }
+    }
+}
+
+impl TryFrom<&str> for Status{
+    type Error = ();
+    fn try_from(str_val : &str) -> Result<Status, ()>{
+        let lowercase_str = str_val.to_lowercase();
+        match lowercase_str.as_str(){
+            "todo" => Ok(Status::ToDo),
+            "inprogress" => Ok(Status::InProgress),
+            "done" => Ok(Status::Done),
+            _ => Err(()),
+        }
+    }
+}
 #[cfg(test)]
 mod tests {
     use super::*;
